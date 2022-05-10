@@ -32,7 +32,17 @@ The first step is to install docker. please run the following commands one-by-on
 
 At this point, docker should be installed and running. please confirm this by running `docker ps`.
 
-The next step is the secrets file. This will contain the docker access token which enables the server to pull images from our private dockerhub registry
+The next step is the secrets file. This will contain the docker access token which enables the server to pull images from our private dockerhub registry. Create a directory at /home/ubuntu/secrets and run sudo nano secrets.json. The contents should look like this:
+
+`{
+	"GITHUB_ACCOUNTS": {},
+	"DOCKER_ACCOUNTS: {
+		"<docker username>": "<docker access token>"
+	},
+	"PASSKEY": "<monitor passkey>"
+}`
+
+Save this file and exit nano.
 
 The next step is to launch the monitor-periphery container. This is handled with the monitor-cli. To start the cli, run the following command:
 
