@@ -44,15 +44,22 @@ The next step is the secrets file. This will contain the docker access token whi
 
 Save this file and exit nano.
 
-The next step is to launch the monitor-periphery container. This is handled with the monitor-cli. To start the cli, run the following command:
+The next step is to launch the monitor-periphery container. This is handled by the monitor-cli. To start the cli, run the following command:
 
 - `npx @mbecker20/monitor-cli@0.0.28`
 
 this will prompt you to install this package, choose yes. In a few seconds, it will finish and you will be greeted with the monitor-cli.
 
-Once it starts, press enter to continue to the next stage.
+Once it starts, press enter to continue to the next stage. To select an option, use the arrow keys and press enter. You can also press escape to go back a step.
 
 - choose "deploy monitor core or periphery"
 - choose "periphery"
-- configure the name of the container (just keep the default monitor-core)
-- 
+- configure the name of the container (keep the default monitor-core)
+- configure the location of the secrets folder (should be the default entry, /home/ubuntu/secrets)
+- configure the location of the system mount point (should be the default, /home/ubuntu/monitor/)
+- configure the port (the default 8000 should work but can be changed if this port is already in use)
+- for restart, choose the default "don't restart" option
+
+When that is complete, press enter to go to the confirm step, and press enter again to launch monitor-periphery. After a couple seconds, the install should finish.
+
+Congratulations, you have started the monitor-periphery client, and the instance can now be configured to connect to monitor-core.
