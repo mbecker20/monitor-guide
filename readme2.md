@@ -4,13 +4,19 @@ This is a guide to launch monitor-periphery, which is a client to enable communi
 
 This guide assumes your instance is running Ubuntu. if it is not using Ubuntu please contact me (Becker).
 
-To start, ensure you have a working nodejs installation. If nodejs is not installed, follow the instructions [here](https://github.com/nodesource/distributions/blob/master/README.md).
-
 The first step is to install docker. There is a convenience script for this, which can be used by cloning the monitor guide repo:
 
 - `git clone https://github.com/mbecker20/monitor-guide.git`
 
-At this point, docker should be installed and running. please confirm this by running `docker ps`.
+If your instance already has nodejs installed, please run:
+
+- `sh monitor-guide/dockerInstallUbuntu.sh`
+
+If nodejs is not installed, run the script that includes the nodejs install as well.
+
+- `sh monitor-guide/nodeDockerInstallUbuntu.sh`
+
+At this point, node and docker should be installed and running. please confirm this by running `node -v` and `docker ps` and ensure they have no errors
 
 The next step is the secrets file. This will contain the docker access token which enables the server to pull images from our private dockerhub registry. Create a directory at /home/ubuntu/secrets and run sudo nano secrets.json. The contents should look like this:
 
