@@ -34,7 +34,7 @@ Once it starts, press enter to continue to the next stage. To select an option, 
 
 - choose "deploy monitor core or periphery"
 - choose "periphery"
-- configure the name of the container (keep the default monitor-core)
+- configure the name of the container (keep the default name, monitor-periphery)
 - configure the location of the secrets folder (should be the default entry, /home/ubuntu/secrets)
 - configure the location of the system mount point (should be the default, /home/ubuntu/monitor/)
 - configure the port (the default 8000 should work but can be changed if this port is already in use)
