@@ -20,7 +20,7 @@ At this point, node and docker should be installed and running. please confirm t
 
 The next step is the secrets file. This will contain the docker access token which enables the server to pull images from our private dockerhub registry. Create a directory at /home/ubuntu/secrets and run sudo nano secrets.json. The contents should look like this:
 
-`{ "GITHUB_ACCOUNTS": {}, "DOCKER_ACCOUNTS: { "<docker username>": "<docker access token>" }, "PASSKEY": "<monitor passkey>" }`
+`{ "GITHUB_ACCOUNTS": {}, "DOCKER_ACCOUNTS": { "<docker username>": "<docker access token>" }, "PASSKEY": "<monitor passkey>" }`
 
 Please replace the docker username, docker access token, and monitor passkey with the values provided to you, then save this file and exit nano.
 
