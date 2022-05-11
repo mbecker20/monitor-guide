@@ -30,7 +30,11 @@ The next step is to launch the monitor-periphery container. This is handled by t
 
 this will prompt you to install this package, choose yes. In a few seconds, it will finish and you will be greeted with the monitor-cli.
 
-Once it starts, press enter to continue to the next stage. To select an option, use the arrow keys and press enter. You can also press escape to go back a step.
+If the cli fails to recognize your docker installation, you probably just need to correct the permissions. Run the fix permissions script with:
+
+- `sh monitor-guide/fixDockerPermissions.sh`
+
+Once monitor-cli starts, press enter to continue to the next stage. To select an option, use the arrow keys and press enter. You can also press escape to go back a step.
 
 - choose "deploy monitor core or periphery"
 - choose "periphery"
