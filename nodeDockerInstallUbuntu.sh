@@ -1,3 +1,10 @@
+echo "installing node"
+
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+echo "node installed"
+
 echo "installing docker"
 
 sudo apt-get remove docker docker-engine docker.io containerd runc
