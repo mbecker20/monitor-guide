@@ -4,47 +4,27 @@ This is a guide to launch monitor-periphery, which is a client to enable communi
 
 This guide assumes your instance is running Ubuntu. if it is not using Ubuntu please contact me (Becker).
 
-To start, ensure you have a working nodejs installation. If nodejs is not installed, follow the instructions [here](https://github.com/nodesource/distributions/blob/master/README.md).
+The first step is to install docker. There is a convenience script for this, which can be used by cloning the monitor guide repo:
 
-The first step is to install docker. please run the following commands one-by-one, in the order listed. the official docker reference for install is found [here](https://docs.docker.com/engine/install/ubuntu/) and [here](https://docs.docker.com/engine/install/linux-postinstall/)
+- `git clone https://github.com/mbecker20/monitor-guide.git`
 
-1. `sudo apt-get remove docker docker-engine docker.io containerd runc`
+If your instance already has nodejs installed, please run:
 
-2. `sudo apt-get update`
+- `sh monitor-guide/dockerInstallUbuntu.sh`
 
-3. `sudo apt-get install ca-certificates curl gnupg lsb-release`
+If nodejs is not installed, run the script that includes the nodejs install as well.
 
-4. `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
+- `sh monitor-guide/nodeDockerInstallUbuntu.sh`
 
-5. `echo \ "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`
-
-6. `sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin`
-
-7. `sudo groupadd docker`
-
-8. `sudo usermod -aG docker $USER`
-
-9. `newgrp docker`
-
-10. `sudo systemctl enable docker.service`
-
-11. `sudo systemctl enable containerd.service`
-
-At this point, docker should be installed and running. please confirm this by running `docker ps`.
+At this point, node and docker should be installed and running. please confirm this by running `node -v` and `docker -v` and ensure they give a version number.
 
 The next step is the secrets file. This will contain the docker access token which enables the server to pull images from our private dockerhub registry. Create a directory at /home/ubuntu/secrets and run sudo nano secrets.json. The contents should look like this:
 
-`{
-	"GITHUB_ACCOUNTS": {},
-	"DOCKER_ACCOUNTS: {
-		"<docker username>": "<docker access token>"
-	},
-	"PASSKEY": "<monitor passkey>"
-}`
+`{ "GITHUB_ACCOUNTS": {}, "DOCKER_ACCOUNTS: { "<docker username>": "<docker access token>" }, "PASSKEY": "<monitor passkey>" }`
 
-Save this file and exit nano.
+Please replace the docker username, docker access token, and monitor passkey with the values provided to you, then save this file and exit nano.
 
-The next step is to launch the monitor-periphery container. This is handled by the monitor-cli. To start the cli, run the following command:
+The next step is to launch the monitor-periphery container. This is handled by the monitor-cli. To start the cli, ensure you are at your home directory by running `cd ~` and then run the following command:
 
 - `npx @mbecker20/monitor-cli@0.0.28`
 
