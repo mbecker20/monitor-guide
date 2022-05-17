@@ -2,7 +2,7 @@
 
 This is a guide to launch monitor-periphery, which is a client to enable communication between your instance and monitor-core, a centralized monitoring platform.
 
-This guide assumes your instance is running Ubuntu. if it is not using Ubuntu please contact me (Becker).
+This guide assumes your instance is running Ubuntu or Red Hat. If it is not using one of these please contact me (Becker).
 
 The first step is to install docker. There is a convenience script for this, which can be used by cloning the monitor guide repo:
 
@@ -10,11 +10,13 @@ The first step is to install docker. There is a convenience script for this, whi
 
 If your instance already has nodejs installed, please run:
 
-- `sh monitor-guide/dockerInstallUbuntu.sh`
+- Ubuntu: `sh monitor-guide/dockerInstallUbuntu.sh`
+- Red Hat: `sh monitor-guide/dockerInstallRedHat.sh`
 
 If nodejs is not installed, run the script that includes the nodejs install as well.
 
-- `sh monitor-guide/nodeDockerInstallUbuntu.sh`
+- Ubuntu: `sh monitor-guide/nodeDockerInstallUbuntu.sh`
+- Red Hat: `sh monitor-guide/nodeDockerInstallRedHat.sh`
 
 At this point, node and docker should be installed and running. please confirm this by running `node -v` and `docker -v` and ensure they give a version number.
 
