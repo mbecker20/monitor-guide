@@ -50,4 +50,10 @@ When that is complete, press enter to go to the confirm step, and press enter ag
 
 Congratulations, you have started the monitor-periphery client, and the instance can now be configured to connect to monitor-core.
 
-## Restarting Monitor-Periphery
+## Restarting monitor-periphery
+
+You can restart monitor-periphery using the cli by following the exact same procedure as above. It is already configured to delete the old monitor-periphery container, pull the new image, and restart it with the given configuration. If the monitor-cli is not accessible or you have started the periphery using all the defaults, there is also a one line convenience script for this:
+
+- `sh monitor-guide/restartPeripheryDefaults.sh`
+
+That should do it! Congratulations, you have restarted monitor-periphery.
