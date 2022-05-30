@@ -57,3 +57,11 @@ You can restart monitor-periphery using the cli by following the exact same proc
 - `sh monitor-guide/restartPeripheryDefaults.sh`
 
 That should do it! Congratulations, you have restarted monitor-periphery.
+
+## Starting the pm2 client
+
+In order for monitor to communicate with pm2, an additional client is necessary to be running on the instance. There is a convenience script to start the client, which runs as a pm2 managed process.
+
+- `sh monitor-guide/startMonitorPm2.sh`
+
+That is it. You should now see monitor-pm2 running as a pm2 process.
