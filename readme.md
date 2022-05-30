@@ -64,4 +64,6 @@ In order for monitor to communicate with pm2, an additional client is necessary 
 
 - `sh monitor-guide/startMonitorPm2.sh`
 
+Note that if you are restarting the pm2 client, you should delete the previous clone of monitor-pm2 repo (`sudo rm -r monitor-pm2`) before running this script.
+
 That is it. You should now see monitor-pm2 running as a pm2 process.
