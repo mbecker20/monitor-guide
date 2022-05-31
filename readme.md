@@ -48,6 +48,10 @@ Once monitor-cli starts, press enter to continue to the next stage. To select an
 
 When that is complete, press enter to go to the confirm step, and press enter again to launch monitor-periphery. After a couple seconds, the install should finish.
 
+Alternatively, you can just run the restart command to start the periphery client with defaults (it also works even if it has not been set up yet). This does not require a working / compatible node installation.
+
+- `sh monitor-guide/restartPeripheryDefaults.sh`
+
 Congratulations, you have started the monitor-periphery client, and the instance can now be configured to connect to monitor-core.
 
 ## Restarting monitor-periphery
