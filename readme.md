@@ -44,7 +44,7 @@ Once monitor-cli starts, press enter to continue to the next stage. To select an
 - configure the location of the secrets folder (should be the default entry, /home/ubuntu/secrets)
 - configure the location of the system mount point (should be the default, /home/ubuntu/monitor/)
 - configure the port (the default 8000 should work but can be changed if this port is already in use)
-- for restart, choose the default "don't restart" option
+- for restart, choose the "unless stopped" option
 
 When that is complete, press enter to go to the confirm step, and press enter again to launch monitor-periphery. After a couple seconds, the install should finish.
 
