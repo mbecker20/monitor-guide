@@ -11,11 +11,13 @@ The first step is to install docker. There is a convenience script for this, whi
 If your instance already has nodejs installed, please run:
 
 - Ubuntu: `sh monitor-guide/dockerInstallUbuntu.sh`
+- Debian: `sh monitor-guide/dockerInstallDebian.sh`
 - Red Hat: `sh monitor-guide/dockerInstallRedHat.sh`
 
 If nodejs is not installed, run the script that includes the nodejs install as well.
 
 - Ubuntu: `sh monitor-guide/nodeDockerInstallUbuntu.sh`
+- Debian: `sh monitor-guide/nodeDockerInstallDebian.sh`
 - Red Hat: `sh monitor-guide/nodeDockerInstallRedHat.sh`
 
 At this point, node and docker should be installed and running. please confirm this by running `node -v` and `docker -v` and ensure they give a version number.
