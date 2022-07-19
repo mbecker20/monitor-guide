@@ -28,7 +28,7 @@ Please replace the docker username, docker access token, and monitor passkey wit
 
 The next step is to launch the monitor-periphery container. This is handled by the monitor-cli. To start the cli, ensure you are at your home directory by running `cd ~` and then run the following command:
 
-- `npx @mbecker20/monitor-cli@0.0.30`
+- `npx @mbecker20/monitor-cli@0.0.31`
 
 this will prompt you to install this package, choose yes. In a few seconds, it will finish and you will be greeted with the monitor-cli.
 
