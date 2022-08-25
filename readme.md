@@ -2,7 +2,7 @@
 
 This is a guide to launch monitor-periphery, which is a client to enable communication between your instance and monitor-core, a centralized monitoring platform.
 
-This guide assumes your instance is running Ubuntu or Red Hat. If it is not using one of these please contact me (Becker).
+This guide assumes your instance is running Ubuntu, Debian, or Red Hat. If it is not using one of these please contact me (Becker).
 
 ## **1. Clone script repo and install Node / Docker**
 
