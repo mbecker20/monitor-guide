@@ -47,8 +47,14 @@ allowed_ips = ["12.34.56.78"]
 
 ## **3. Restart periphery (optional)**
 
-If you edit the periphery config, just restart periphery for the changes to take effect, using this command.
+If you edit the periphery config, just restart periphery for the changes to take effect, using this command:
 
 ```
 systemctl --user restart periphery
+```
+
+To view the status of the periphery agent (running or exited), check with systemctl:
+
+```
+systemctl --user status periphery
 ```
