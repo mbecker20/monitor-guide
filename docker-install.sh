@@ -16,11 +16,7 @@ sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 
-sudo groupadd docker
-
-sudo usermod -aG docker $USER
-
-newgrp docker
+sh $HOME/monitor-guide/user-docker-permissions.sh
 
 sudo systemctl enable docker.service
 

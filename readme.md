@@ -50,5 +50,5 @@ allowed_ips = ["12.34.56.78"]
 If you edit the periphery config, just restart periphery for the changes to take effect, using this command.
 
 ```
-sudo systemctl restart periphery
+systemctl --user restart periphery
 ```
