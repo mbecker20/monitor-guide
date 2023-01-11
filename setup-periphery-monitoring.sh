@@ -23,7 +23,7 @@ TimeoutStartSec=0
 [Install]
 WantedBy=default.target"
 
-sudo printf $UNIT_FILE > /etc/systemd/system/periphery.service
+sudo echo $UNIT_FILE > /etc/systemd/system/periphery.service
 
 sudo systemctl daemon-reload
 
