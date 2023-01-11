@@ -10,9 +10,9 @@ monitor periphery gen-config
 
 cargo install monitor_periphery
 
-UNIT_FILE="[Unit]\nDescription=agent to connect with monitor core\nAfter=network.target\n\n[Service]\nType=simple\nUser=$USER\nWorkingDirectory=$HOME\nExecStart=/bin/bash --login -c 'source $HOME/.bashrc; $HOME/.cargo/bin/periphery --config-path ~/.monitor/periphery.config.toml --home-dir $HOME'\nTimeoutStartSec=0\n\n[Install]\nWantedBy=default.target"
+UNIT_FILE="[Unit]%s\nDescription=agent to connect with monitor core%s\nAfter=network.target%s\n%s\n[Service]%s\nType=simple%s\nUser=$USER%s\nWorkingDirectory=$HOME%s\nExecStart=/bin/bash --login -c 'source $HOME/.bashrc; $HOME/.cargo/bin/periphery --config-path ~/.monitor/periphery.config.toml --home-dir $HOME'%s\nTimeoutStartSec=0%s\n%s\n[Install]%s\nWantedBy=default.target"
 
-sudo echo $UNIT_FILE > /etc/systemd/system/periphery.service
+sudo printf $UNIT_FILE > /etc/systemd/system/periphery.service
 
 sudo systemctl daemon-reload
 
