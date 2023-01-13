@@ -1,87 +1,62 @@
-# Monitor Periphery Launch Guide
+# Monitor Periphery Setup Guide
 
-This is a guide to launch monitor-periphery, which is a client to enable communication between your instance and monitor-core, a centralized monitoring platform.
+This is a guide to setup monitor-periphery, which is a client to enable communication between your instance and monitor-core.
 
-This guide assumes your instance is running Ubuntu, Debian, or Red Hat. If it is not using one of these please contact me (Becker).
+This guide assumes your instance is running Ubuntu.
 
-## **1. Clone script repo and install Node / Docker**
+## **1. Clone this repo**
 
-The first step is to install docker. There is a convenience script for this, which can be used by cloning the monitor guide repo:
+```
+git clone https://github.com/mbecker20/monitor-guide.git
+```
+## **2. Run setup script**
 
-- `git clone https://github.com/mbecker20/monitor-guide.git`
+if you want to use this server to build and deploy docker containers, run:
 
-If your instance already has nodejs installed, please run:
+```
+sh monitor-guide/setup-periphery-docker.sh
+```
 
-- Ubuntu: `sh monitor-guide/dockerInstallUbuntu.sh`
-- Debian: `sh monitor-guide/dockerInstallDebian.sh`
-- Red Hat: `sh monitor-guide/dockerInstallRedHat.sh`
+if you don't need docker installed, run:
 
-If nodejs is not installed, run the script that includes the nodejs install as well.
+```
+sh monitor-guide/setup-periphery-monitoring.sh
+```
 
-- Ubuntu: `sh monitor-guide/nodeDockerInstallUbuntu.sh`
-- Debian: `sh monitor-guide/nodeDockerInstallDebian.sh`
-- Red Hat: `sh monitor-guide/nodeDockerInstallRedHat.sh`
+This will start monitor periphery as a user managed systemd service.
 
-At this point, node and docker should be installed and running. please confirm this by running `node -v` and `docker -v` and ensure they give a version number.
+To view the status of the periphery agent, check with systemctl:
 
-## **2. Create secrets.json file**
+```
+systemctl --user status periphery
+```
 
-The next step is the secrets file. This will contain the docker access token which enables the server to pull images from our private dockerhub registry. Create a directory at /home/ubuntu/secrets and run sudo nano secrets.json. The contents should look like this:
+## **3. Edit config file (optional)**
 
-	{
-		"GITHUB_ACCOUNTS": {}, 
-		"DOCKER_ACCOUNTS": { 
-			"<docker username>": "<docker access token>" 
-		}, 
-		"PASSKEY": "<monitor passkey>" 
-	}
+You can now edit the config file at ~/.monitor/periphery.config.toml and add any required docker or github accounts needed for access to private github / docker repos, for example you can add:
 
-Please replace the docker username, docker access token, and monitor passkey with the values provided to you, then save this file and exit nano.
+```
+[github_accounts]
+username1 = "github-access-token-1"
+username2 = "github-access-token-2"
 
-## **3. Start monitor-periphery using the CLI (or with start defaults script)**
+[docker_accounts]
+username1 = "docker-access-token-1"
+username2 = "docker-access-token-2"
+```
 
-The next step is to launch the monitor-periphery container. This is handled by the monitor-cli. To start the cli, ensure you are at your home directory by running `cd ~` and then run the following command:
+Note that only the usernames are ever returned to monitor core, the secret access tokens stay private on your server.
 
-- `npx @mbecker20/monitor-cli@0.0.31`
+To increase security, you can whitelist the IP address of monitor core:
 
-this will prompt you to install this package, choose yes. In a few seconds, it will finish and you will be greeted with the monitor-cli.
+```
+allowed_ips = ["12.34.56.78"]
+```
 
-If the cli fails to recognize your docker installation, you probably just need to correct the permissions. Run the fix permissions script with:
+## **3. Restart periphery (optional)**
 
-- `sh monitor-guide/fixDockerPermissions.sh`
+If you edit the periphery config, just restart periphery for the changes to take effect, using this command:
 
-Once monitor-cli starts, press enter to continue to the next stage. To select an option, use the arrow keys and press enter. You can also press escape to go back a step.
-
-- choose "deploy monitor core or periphery"
-- choose "periphery"
-- configure the name of the container (keep the default name, monitor-periphery)
-- configure the location of the secrets folder (should be the default entry, /home/ubuntu/secrets)
-- configure the location of the system mount point (should be the default, /home/ubuntu/monitor/)
-- configure the port (the default 8000 should work but can be changed if this port is already in use)
-- for restart, choose the "unless stopped" option
-
-When that is complete, press enter to go to the confirm step, and press enter again to launch monitor-periphery. After a couple seconds, the install should finish.
-
-**Alternatively**, you can just run the restart command to start the periphery client with defaults (it also works even if it has not been set up yet). This does not require a working / compatible node installation.
-
-- `sh monitor-guide/restartPeripheryDefaults.sh`
-
-Congratulations, you have started the monitor-periphery client, and the instance can now be configured to connect to monitor-core.
-
-# Restarting monitor-periphery
-
-You can restart monitor-periphery using the CLI by following the exact same procedure as above. The CLI is already configured to delete the old monitor-periphery container, pull the new image, and restart it with the given configuration. If the monitor-cli is not accessible or you have started the periphery using all the defaults, there is also a one line convenience script for this:
-
-- `sh monitor-guide/restartPeripheryDefaults.sh`
-
-That should do it! Congratulations, you have restarted monitor-periphery.
-
-# Starting the pm2 client
-
-In order for monitor to communicate with pm2, an additional client is necessary to be running on the instance. There is a convenience script to start the client, which runs as a pm2 managed process.
-
-- `sh monitor-guide/startMonitorPm2.sh`
-
-Note that if you are restarting the pm2 client, you should delete the previous clone of monitor-pm2 repo (`sudo rm -r monitor-pm2`) before running this script.
-
-That is it. You should now see monitor-pm2 running as a pm2 process.
+```
+systemctl --user restart periphery
+```
