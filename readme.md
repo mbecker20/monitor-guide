@@ -23,9 +23,17 @@ if you don't need docker installed, run:
 sh monitor-guide/setup-periphery-monitoring.sh
 ```
 
+This will start monitor periphery as a user managed systemd service.
+
+To view the status of the periphery agent, check with systemctl:
+
+```
+systemctl --user status periphery
+```
+
 ## **3. Edit config file (optional)**
 
-Periphery is now running as a systemd service. You can now edit the config file at ~/.monitor/periphery.config.toml, and add any required docker or github accounts needed for access to private github / docker repos, for example you can add
+You can now edit the config file at ~/.monitor/periphery.config.toml and add any required docker or github accounts needed for access to private github / docker repos, for example you can add:
 
 ```
 [github_accounts]
@@ -51,10 +59,4 @@ If you edit the periphery config, just restart periphery for the changes to take
 
 ```
 systemctl --user restart periphery
-```
-
-To view the status of the periphery agent (running or exited), check with systemctl:
-
-```
-systemctl --user status periphery
 ```
