@@ -17,7 +17,7 @@ if ! grep ".monitor/bin" $HOME/.bashrc > /dev/null; then
 	echo "export PATH=$HOME/.monitor/bin:\$PATH" >> ~/.bashrc
 fi
 
-source "$HOME/.bashrc"
+export PATH="$HOME/.monitor/bin:$PATH"
 
 if ! test -f "$HOME/.monitor/periphery.config.toml"; then
 	monitor periphery gen-config
