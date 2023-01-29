@@ -13,7 +13,8 @@ curl -L https://github.com/mbecker20/monitor/releases/download/v0.1.11/periphery
 chmod +x $BIN_PATH/periphery
 
 # this adds $HOME/.monitor/bin to path
-if ! grep ".monitor/bin" $HOME/.bashrc > /dev/null; then 
+if ! grep ".monitor/bin" $HOME/.bashrc > /dev/null; then
+	echo "" >> $HOME/.bashrc
 	echo "export PATH=$HOME/.monitor/bin:\$PATH" >> ~/.bashrc
 fi
 
