@@ -17,6 +17,8 @@ if you want to use this server to build and deploy docker containers, run:
 sh monitor-guide/setup-periphery-docker.sh && sh monitor-guide/setup-periphery-monitoring.sh
 ```
 
+note. you should restart the instance after installing docker, or docker related commands may fail.
+
 if you don't need docker installed, just run:
 
 ```
@@ -51,6 +53,12 @@ To increase security, you can whitelist the IP address of monitor core:
 
 ```
 allowed_ips = ["12.34.56.78"]
+```
+
+you can also increase the stats polling rate to 1-sec for more granular system stats reporting. but note this increases periphery cpu usage slightly.
+
+```
+stats_polling_rate = "1-sec"
 ```
 
 ## **3. Restart periphery (optional)**
