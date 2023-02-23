@@ -14,7 +14,11 @@ git clone https://github.com/mbecker20/monitor-guide.git
 if you want to use this server to build and deploy docker containers, run:
 
 ```
-sh monitor-guide/setup-periphery-docker.sh && sh monitor-guide/setup-periphery-monitoring.sh
+sh monitor-guide/setup-periphery-docker.sh
+```
+
+```
+sh monitor-guide/setup-periphery-monitoring.sh
 ```
 
 note. you should restart the instance after installing docker, or docker related commands may fail.
