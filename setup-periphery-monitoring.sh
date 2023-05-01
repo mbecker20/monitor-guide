@@ -4,12 +4,12 @@ BIN_PATH=$HOME/.monitor/bin
 mkdir -p $BIN_PATH
 
 echo "\ndownloading monitor cli...\n"
-curl -L https://github.com/mbecker20/monitor/releases/download/v0.3.2/monitor > $BIN_PATH/monitor
+curl -L https://github.com/mbecker20/monitor/releases/download/v0.3.3/monitor > $BIN_PATH/monitor
 chmod +x $BIN_PATH/monitor
 
 echo "\ndownloading monitor periphery...\n"
 systemctl --user stop periphery # in case its currently in use
-curl -L https://github.com/mbecker20/monitor/releases/download/v0.3.2/periphery > $BIN_PATH/periphery
+curl -L https://github.com/mbecker20/monitor/releases/download/v0.3.3/periphery > $BIN_PATH/periphery
 chmod +x $BIN_PATH/periphery
 
 # this adds $HOME/.monitor/bin to path
